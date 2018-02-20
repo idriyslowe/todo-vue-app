@@ -5,7 +5,8 @@ var HomePage = {
     data: function() {
       return {
         message: "Welcome to Vue.js!",
-        tasks: []
+        tasks: [],
+        newTask: {text: ""}
       };
     },
     // this is like the componentDidMount
@@ -14,7 +15,14 @@ var HomePage = {
             this.tasks = response.data;
         }.bind(this));
     },
-    methods: {},
+    methods: {
+        createTask: function() {
+            axios.post('/v1/tasks', this.newTask).then(function(response) {
+                this.tasks.push(response.data);
+                this.newTask = {text: ""};
+            }.bind(this));
+        }
+    },
     computed: {}
 };
 

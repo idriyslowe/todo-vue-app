@@ -24,6 +24,13 @@
         <li v-for="task in tasks">{{ task.text }}</li>
     </ul>
 
+    <div>
+        New Task: <input v-model="newTask.text" type="text"></input>
+    </div>
+
+    <div>
+        <input type="submit" v-on:click="createTask()"></input>
+    </div>
   </div>
 </template>
 
