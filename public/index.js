@@ -21,6 +21,12 @@ var HomePage = {
                 this.tasks.push(response.data);
                 this.newTask = {text: ""};
             }.bind(this));
+        },
+        updateTask: function(task) {
+            var taskIndex = this.tasks.indexOf(task);
+            axios.patch("/v1/tasks/" + task.id, task).then(function(response) {
+                this.tasks[taskIndex] = task.data;
+            }.bind(this));
         }
     },
     computed: {}

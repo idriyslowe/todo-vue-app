@@ -23,6 +23,7 @@
     <ul v-for="(task, k) in tasks">
         <li>{{ task.text }}</li>
         <input id="{k}" v-model="task.text" type="text"></input>
+        <input type="submit" v-on:click="updateTask(task)"></input>
     </ul>
 
     <div>
