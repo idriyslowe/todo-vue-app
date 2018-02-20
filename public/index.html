@@ -20,14 +20,15 @@
 <template id="home-page">
   <div class="vue-component">
 
-    <ul>
-        <li v-for="task in tasks">{{ task.text }}</li>
+    <ul v-for="(task, k) in tasks">
+        <li>{{ task.text }}</li>
+        <input id="{k}" v-model="task.text" type="text"></input>
     </ul>
 
     <div>
         New Task: <input v-model="newTask.text" type="text"></input>
     </div>
-
+        
     <div>
         <input type="submit" v-on:click="createTask()"></input>
     </div>
