@@ -4,7 +4,7 @@ var HomePage = {
     template: "#home-page",
     data: function() {
       return {
-        message: "Welcome Home",
+        message: "Go to Wat",
         tasks: [],
         newTask: {text: ""}
       };
