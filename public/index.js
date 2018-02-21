@@ -4,7 +4,7 @@ var HomePage = {
     template: "#home-page",
     data: function() {
       return {
-        message: "Welcome to Vue.js!",
+        message: "Welcome Home",
         tasks: [],
         newTask: {text: ""}
       };
@@ -27,14 +27,38 @@ var HomePage = {
             axios.patch("/v1/tasks/" + task.id, task).then(function(response) {
                 this.tasks[taskIndex] = task.data;
             }.bind(this));
+        },
+        deleteTask: function(task) {
+            var taskIndex = this.tasks.indexOf(task);
+            axios.delete("/v1/tasks/" + task.id).then(function(response) {
+                this.tasks.splice(taskIndex, 1);
+            }.bind(this));
         }
     },
     computed: {}
 };
 
+var WatPage = {
+    template: "#wat-page",
+    data: function() {
+      return {
+        message: "You did WAT now?"
+      };
+    },
+    // this is like the componentDidMount
+    created: function() {
+        // axios.get("/v1/tasks").then(function(response) {
+        //     this.tasks = response.data;
+        // }.bind(this));
+    },
+    methods: {},
+    computed: {}
+};
+
 var router = new VueRouter({
     routes: [
-        { path: "/", component: HomePage }
+        { path: "/", component: HomePage },
+        { path: "/wat", component: WatPage}
     ],
     scrollBehavior: function(to, from, savedPosition) {
       return { x: 0, y: 0 };

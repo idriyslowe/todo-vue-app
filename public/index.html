@@ -24,6 +24,7 @@
         <li>{{ task.text }}</li>
         <input id="{k}" v-model="task.text" type="text"></input>
         <input type="submit" v-on:click="updateTask(task)"></input>
+        <button id="{k}" v-on:click="deleteTask(task)">Kill Me Now</button>
     </ul>
 
     <div>
@@ -36,3 +37,8 @@
   </div>
 </template>
 
+<template id="wat-page">
+  <div class="vue-component">
+    <p>{{message}}</p>
+  </div>
+</template>
